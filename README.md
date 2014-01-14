@@ -3,7 +3,7 @@ ViewEnginePlus
 
 #### Hit "Watch" / "Star" to make sure you get updates
 
-An upgraded ViewEngine for MVC that supports skins, language based changes and debug only views
+An upgraded ViewEngine for .NET MVC that supports skins, language based changes and debug only views
 
 -------
 
