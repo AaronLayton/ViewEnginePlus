@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Eventure.ViewEngines
+namespace ViewEnginePlus.ViewEngines
 {
     public class WebFormThemeViewEngine : IViewEngine
     {

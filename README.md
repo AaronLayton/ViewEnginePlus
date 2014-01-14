@@ -18,7 +18,7 @@ protected void Application_Start()
 	System.Web.Mvc.ViewEngines.Engines.Clear();
 	
 	// NOTE: use either view engine as required to avoid performance penalties
-	System.Web.Mvc.ViewEngines.Engines.Add(new Eventure.ViewEngines.RazorThemeViewEngine());
-	//System.Web.Mvc.ViewEngines.Engines.Add(new Eventure.ViewEngines.WebFormThemeViewEngine());
+	System.Web.Mvc.ViewEngines.Engines.Add(new ViewEnginePlus.ViewEngines.RazorThemeViewEngine());
+	//System.Web.Mvc.ViewEngines.Engines.Add(new ViewEnginePlus.ViewEngines.WebFormThemeViewEngine());
 }
 ```

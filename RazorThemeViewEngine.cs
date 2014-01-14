@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eventure.ViewEngines
+namespace ViewEnginePlus.ViewEngines
 {
     public class RazorThemeViewEngine : IViewEngine
     {
