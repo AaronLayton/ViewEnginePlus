@@ -9,11 +9,13 @@ namespace ViewEnginePlus.Demo
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/js/bootstrap").Include(
-                "~/js/bootstrap.js"));
+                "~/js/bootstrap.js",
+                "~/js/prettify.js"));
 
             bundles.Add(new StyleBundle("~/css/bootstrap").Include(
                 "~/css/bootstrap.css",
-                "~/css/bootstrap-theme.css"));
+                "~/css/bootstrap-theme.css",
+                "~/css/prettify.css"));
 
         }
     }
