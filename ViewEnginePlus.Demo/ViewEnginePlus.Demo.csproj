@@ -185,6 +185,7 @@
     <Compile Include="Controllers\DebugController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
+    <Compile Include="Controllers\ThemesController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -255,7 +256,22 @@
     <Content Include="Views\Debug\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Language\Index.cshtml" />
+    <Content Include="Views\Language\Index_dk.cshtml" />
+    <Content Include="Views\Language\Index_ie.cshtml" />
+    <Content Include="Views\Language\Index_nl.cshtml" />
+    <Content Include="Views\Language\Index_nl_debug.cshtml" />
+    <Content Include="Views\Language\Index_se.cshtml" />
+    <Content Include="Views\Language\_LanguageContent.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Views\Debug\Index_debug.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Themes\Red\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Themes\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
