@@ -18,6 +18,18 @@ namespace ViewEnginePlus.Demo
         {
             AreaRegistration.RegisterAllAreas();
 
+            // Register the new view engine and its routes
+            RegisterViewEnginePlusRoutes();
+
+            WebApiConfig.Register(GlobalConfiguration.Configuration);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AuthConfig.RegisterAuth();
+        }
+
+        private void RegisterViewEnginePlusRoutes()
+        {
             // Clear all old ViewEngines and register our RazorThemeViewEngine
             System.Web.Mvc.ViewEngines.Engines.Clear();
 
@@ -35,26 +47,63 @@ namespace ViewEnginePlus.Demo
                 }
             });
 
-            ViewEnginePlus.AddViewRule("debug", () => {
+            ViewEnginePlus.AddViewRule("dk", () =>
+            {
                 try
                 {
-                    var returnVal = false;
-
-                    if (HttpContext.Current.Request.IsLocal) returnVal = true;
-
-                    return returnVal;
-                } catch(Exception e) {
+                    return (string)HttpContext.Current.Session["language"] == "dk";
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+            });
+            ViewEnginePlus.AddViewRule("ie", () =>
+            {
+                try
+                {
+                    return (string)HttpContext.Current.Session["language"] == "ie";
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+            });
+            ViewEnginePlus.AddViewRule("nl", () =>
+            {
+                try
+                {
+                    return (string)HttpContext.Current.Session["language"] == "nl";
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+            });
+            ViewEnginePlus.AddViewRule("se", () =>
+            {
+                try
+                {
+                    return (string)HttpContext.Current.Session["language"] == "se";
+                }
+                catch (Exception e)
+                {
                     return false;
                 }
             });
 
-            
+            ViewEnginePlus.AddViewRule("debug", () =>
+            {
+                try
+                {
+                    return HttpContext.Current.Request.IsLocal || HttpContext.Current.Request.Url.Host.Contains("evdesign");
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+            });
 
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
-            AuthConfig.RegisterAuth();
         }
     }
 }

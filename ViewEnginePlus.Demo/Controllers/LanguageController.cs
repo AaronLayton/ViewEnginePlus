@@ -12,5 +12,12 @@ namespace ViewEnginePlus.Demo.Controllers
         {
             return View();
         }
+
+        public ActionResult Set( string language )
+        {
+            Session["language"] = language;
+
+            return RedirectToAction("index", "language");
+        }
     }
 }

@@ -26,8 +26,18 @@ namespace ViewEnginePlus
 
         public ViewEngineResult FindView(ControllerContext controllerContext, string viewName, string masterName, bool useCache)
         {
+            // Refresh all of the test cases
             TestViewCases();
-            return ThemeViewEngine().FindView(controllerContext, viewName, masterName, useCache);
+
+            ViewEngineResult resultView = ThemeViewEngine().FindView(controllerContext, ModifyViewName(viewName), masterName, useCache);
+
+            // If there is no modified view then try the original name
+            if (resultView.View == null)
+            {
+                resultView = ThemeViewEngine().FindView(controllerContext, viewName, masterName, useCache);
+            }
+
+            return resultView;
         }
 
         public void ReleaseView(ControllerContext controllerContext, IView view)
@@ -74,10 +84,10 @@ namespace ViewEnginePlus
                     new[]
                     {
                         "~/Views/{1}/{0}_" + viewCase + ".cshtml",
-                        //"~/Themes/" + activeTheme + "/Views/{1}/{0}.cshtml",
-                        //"~/Themes/" + activeTheme + "/Views/{0}.cshtml",
-                        //"~/Themes/" + activeTheme + "/Views/Shared/{0}.cshtml",
-                        //"~/Themes/" + activeTheme + "/Views/Shared/{1}/{0}.cshtml"
+                        "~/Themes/" + activeTheme + "/Views/{1}/{0}.cshtml",
+                        "~/Themes/" + activeTheme + "/Views/{0}.cshtml",
+                        "~/Themes/" + activeTheme + "/Views/Shared/{0}.cshtml",
+                        "~/Themes/" + activeTheme + "/Views/Shared/{1}/{0}.cshtml"
                     }.Union(lastEngine.ViewLocationFormats).ToArray();
 
 
@@ -85,9 +95,9 @@ namespace ViewEnginePlus
                 lastEngine.PartialViewLocationFormats =
                     new[]
                     {
-                        //"~/Themes/" + activeTheme + "/Views/{1}/{0}.cshtml",
-                        //"~/Themes/" + activeTheme + "/Views/Shared/{0}.cshtml",
-                        //"~/Themes/" + activeTheme + "/Views/Shared/{1}/{0}.cshtml",
+                        "~/Themes/" + activeTheme + "/Views/{1}/{0}.cshtml",
+                        "~/Themes/" + activeTheme + "/Views/Shared/{0}.cshtml",
+                        "~/Themes/" + activeTheme + "/Views/Shared/{1}/{0}.cshtml",
                         "~/Themes/" + activeTheme + "/Views/{0}.cshtml"
                     }.Union(lastEngine.PartialViewLocationFormats).ToArray();
 
@@ -96,9 +106,9 @@ namespace ViewEnginePlus
                 lastEngine.MasterLocationFormats =
                     new[]
                     {
-                        //"~/Themes/" + activeTheme + "/Views/{1}/{0}.cshtml",
-                        //"~/Themes/" + activeTheme + "/Views/Shared/{1}/{0}.cshtml",
-                        //"~/Themes/" + activeTheme + "/Views/Shared/{0}.cshtml",
+                        "~/Themes/" + activeTheme + "/Views/{1}/{0}.cshtml",
+                        "~/Themes/" + activeTheme + "/Views/Shared/{1}/{0}.cshtml",
+                        "~/Themes/" + activeTheme + "/Views/Shared/{0}.cshtml",
                         "~/Themes/" + activeTheme + "/Views/{0}.cshtml"
                     }.Union(lastEngine.MasterLocationFormats).ToArray();
 
