@@ -12,6 +12,9 @@ namespace ViewEnginePlus.Demo
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            
+            // http://mvccoderouting.codeplex.com/discussions/453399
+            routes.RouteExistingFiles = true;
 
             routes.MapRoute(
                 name: "Default",
