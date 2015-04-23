@@ -24,5 +24,3 @@ protected void Application_Start()
 	//System.Web.Mvc.ViewEngines.Engines.Add(new ViewEnginePlus.ViewEngines.WebFormThemeViewEngine());
 }
 ```
-
-'bug'
